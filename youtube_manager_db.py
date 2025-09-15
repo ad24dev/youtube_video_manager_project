@@ -15,20 +15,24 @@ cursor.execute('''
 
 def list_videos ():
       cursor.execute("SELECT * FROM videos")
-      for row in cursor.fetchall():
-        print(row)
+      all_rows = cursor.fetchall()
+      if all_rows:  
+            for row in all_rows:
+              print(row)
+      else: 
+            print("*** List is empty ! ***")
 
 def add_video(name, time):
     cursor.execute("INSERT INTO videos (name, time) VALUES (?, ?)", (name, time))
-    cursor.commit()
+    conn.commit()
   
 def update_video(video_id, new_name, new_time):
     cursor.execute("UPDATE videos SET name = ?, time = ?, WHERE id = ?", (new_name, new_time, video_id))
-    cursor.commit()  
+    conn.commit()  
   
 def delete_video(video_id):
     cursor.execute("DELETE FROM videos where id = ?", (video_id,))
-    cursor.commit()
+    conn.commit()
   
 
 def main ():
@@ -42,7 +46,7 @@ def main ():
         choice = input("Enter your choice: ")
         
         if choice == "1":
-             list_videos()
+            list_videos()
         elif choice == '2':
           name = input("Enter the video name: ")
           time =  input("Enter the video time: ")
