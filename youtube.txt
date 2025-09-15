@@ -1,0 +1,1 @@
+[{"name": "python with Ali, 1.5 hours", "time": "2.5 hours"}, {"name": "js backend development ", "time": "1.5 hours"}]
